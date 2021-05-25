@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CommSysModuleMapper">
+    <resultMap id="BaseResultMap" type="com.joker.entity.CommSysModule">
+        <result column="module_id" jdbcType="VARCHAR" property="moduleId"/>
+        <result column="module_name" jdbcType="VARCHAR" property="moduleName"/>
+        <result column="module_url_key" jdbcType="VARCHAR" property="moduleUrlKey"/>
+        <result column="module_url" jdbcType="VARCHAR" property="moduleUrl"/>
+        <result column="module_parent" jdbcType="VARCHAR" property="moduleParent"/>
+        <result column="module_level" jdbcType="VARCHAR" property="moduleLevel"/>
+        <result column="module_sort" jdbcType="INTEGER" property="moduleSort"/>
+        <result column="is_display" jdbcType="VARCHAR" property="isDisplay"/>
+        <result column="create_user" jdbcType="VARCHAR" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        module_id, module_name, module_url_key, module_url, module_parent, module_level, module_sort,
+        is_display, create_user, create_time
+    </sql>
+    <select id="findList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from comm_sys_module
+    </select>
+    <insert id="insert" parameterType="com.joker.entity.CommSysModule">
+        insert into comm_sys_module (module_id, module_name, module_url_key,
+        module_url, module_parent, module_level,
+        module_sort, is_display, create_user,
+        create_time)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.moduleId}, #{item.moduleName}, #{item.moduleUrlKey},
+            #{item.moduleUrl}, #{item.moduleParent}, #{item.moduleLevel},
+            #{item.moduleSort}, #{item.isDisplay}, #{item.createUser},
+            #{item.createTime})
+        </foreach>
+    </insert>
+</mapper>

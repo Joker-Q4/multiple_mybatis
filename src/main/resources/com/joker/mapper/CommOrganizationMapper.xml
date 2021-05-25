@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CommOrganizationMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CommOrganization">
+    <id column="organization_id" jdbcType="VARCHAR" property="organizationId" />
+    <result column="organization_code" jdbcType="VARCHAR" property="organizationCode" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="principal" jdbcType="VARCHAR" property="principal" />
+    <result column="office_tel" jdbcType="VARCHAR" property="officeTel" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="owner_province" jdbcType="VARCHAR" property="ownerProvince" />
+    <result column="owner_city" jdbcType="VARCHAR" property="ownerCity" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="lczt_id" jdbcType="VARCHAR" property="lcztId" />
+    <result column="cyhdw" jdbcType="VARCHAR" property="cyhdw" />
+    <result column="zzdj_id" jdbcType="VARCHAR" property="zzdjId" />
+    <result column="fjdz" jdbcType="VARCHAR" property="fjdz" />
+    <result column="fjmc" jdbcType="VARCHAR" property="fjmc" />
+    <result column="shjg" jdbcType="VARCHAR" property="shjg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    organization_id, organization_code, full_name, principal, office_tel, address, parent_id, 
+    owner_province, owner_city, create_user, create_time, update_user, update_time, lczt_id, 
+    cyhdw, zzdj_id, fjdz, fjmc, shjg
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comm_organization
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CommOrganization">
+    insert into comm_organization (organization_id, organization_code, 
+      full_name, principal, office_tel, 
+      address, parent_id, owner_province, 
+      owner_city, create_user, create_time, 
+      update_user, update_time, lczt_id, 
+      cyhdw, zzdj_id, fjdz, 
+      fjmc, shjg)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.organizationId,jdbcType=VARCHAR}, #{item.organizationCode,jdbcType=VARCHAR},
+      #{item.fullName,jdbcType=VARCHAR}, #{item.principal,jdbcType=VARCHAR}, #{item.officeTel,jdbcType=VARCHAR},
+      #{item.address,jdbcType=VARCHAR}, #{item.parentId,jdbcType=VARCHAR}, #{item.ownerProvince,jdbcType=VARCHAR},
+      #{item.ownerCity,jdbcType=VARCHAR}, #{item.createUser,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP},
+      #{item.updateUser,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.lcztId,jdbcType=VARCHAR},
+      #{item.cyhdw,jdbcType=VARCHAR}, #{item.zzdjId,jdbcType=VARCHAR}, #{item.fjdz,jdbcType=VARCHAR},
+      #{item.fjmc,jdbcType=VARCHAR}, #{item.shjg,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CommSysRoleModulePurviewMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CommSysRoleModulePurview">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="module_id" jdbcType="VARCHAR" property="moduleId" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id,module_id,role_id
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comm_sys_role_module_purview
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CommSysRoleModulePurview">
+    insert into comm_sys_role_module_purview (id, module_id, role_id
+      )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id,jdbcType=INTEGER}, #{item.moduleId,jdbcType=VARCHAR}, #{item.roleId,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

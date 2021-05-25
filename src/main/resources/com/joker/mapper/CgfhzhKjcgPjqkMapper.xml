@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CgfhzhKjcgPjqkMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CgfhzhKjcgPjqk">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="kjcg_id" jdbcType="VARCHAR" property="kjcgId" />
+    <result column="pjfs_id" jdbcType="VARCHAR" property="pjfsId" />
+    <result column="pjdw_id" jdbcType="VARCHAR" property="pjdwId" />
+    <result column="pjrq" jdbcType="TIMESTAMP" property="pjrq" />
+    <result column="pjbgbh" jdbcType="VARCHAR" property="pjbgbh" />
+    <result column="pjbgjl" jdbcType="VARCHAR" property="pjbgjl" />
+    <result column="fjmc" jdbcType="VARCHAR" property="fjmc" />
+    <result column="fjdz" jdbcType="VARCHAR" property="fjdz" />
+    <result column="fj_id" jdbcType="VARCHAR" property="fjId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, kjcg_id, pjfs_id, pjdw_id, pjrq, pjbgbh, pjbgjl, fjmc, fjdz, fj_id
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cgfhzh_kjcg_pjqk
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CgfhzhKjcgPjqk">
+    insert into cgfhzh_kjcg_pjqk (id, kjcg_id, pjfs_id, 
+      pjdw_id, pjrq, pjbgbh, 
+      pjbgjl, fjmc, fjdz, 
+      fj_id)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+    (#{item.id,jdbcType=VARCHAR}, #{item.kjcgId,jdbcType=VARCHAR}, #{item.pjfsId,jdbcType=VARCHAR}, 
+      #{item.pjdwId,jdbcType=VARCHAR}, #{item.pjrq,jdbcType=TIMESTAMP}, #{item.pjbgbh,jdbcType=VARCHAR}, 
+      #{item.pjbgjl,jdbcType=VARCHAR}, #{item.fjmc,jdbcType=VARCHAR}, #{item.fjdz,jdbcType=VARCHAR}, 
+      #{item.fjId,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

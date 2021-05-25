@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CgfhzhCgpsszMapper">
+    <resultMap id="BaseResultMap" type="com.joker.entity.CgfhzhCgpssz">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="cgid" jdbcType="VARCHAR" property="cgid"/>
+        <result column="cgname" jdbcType="VARCHAR" property="cgname"/>
+        <result column="zjid" jdbcType="VARCHAR" property="zjid"/>
+        <result column="zjname" jdbcType="VARCHAR" property="zjname"/>
+        <result column="psgz" jdbcType="VARCHAR" property="psgz"/>
+        <result column="creater" jdbcType="VARCHAR" property="creater"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="ifpf" jdbcType="VARCHAR" property="ifpf"/>
+        <result column="pskssj" jdbcType="TIMESTAMP" property="pskssj"/>
+        <result column="psjg" jdbcType="VARCHAR" property="psjg"/>
+        <result column="psdf" jdbcType="VARCHAR" property="psdf"/>
+        <result column="pssj" jdbcType="TIMESTAMP" property="pssj"/>
+        <result column="psr" jdbcType="VARCHAR" property="psr"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, cgid, cgname, zjid, zjname, psgz, creater, create_time, ifpf, pskssj, psjg, psdf,
+    pssj, psr
+    </sql>
+    <select id="findList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from cgfhzh_cgpssz
+    </select>
+    <insert id="insert" parameterType="com.joker.entity.CgfhzhCgpssz">
+        insert into cgfhzh_cgpssz (id, cgid, cgname,
+        zjid, zjname, psgz,
+        creater, create_time, ifpf,
+        pskssj, psjg, psdf,
+        pssj, psr)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=VARCHAR}, #{item.cgid,jdbcType=VARCHAR}, #{item.cgname,jdbcType=VARCHAR},
+            #{item.zjid,jdbcType=VARCHAR}, #{item.zjname,jdbcType=VARCHAR}, #{item.psgz,jdbcType=VARCHAR},
+            #{item.creater,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.ifpf,jdbcType=VARCHAR},
+            #{item.pskssj,jdbcType=TIMESTAMP}, #{item.psjg,jdbcType=VARCHAR}, #{item.psdf,jdbcType=VARCHAR},
+            #{item.pssj,jdbcType=TIMESTAMP}, #{item.psr,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

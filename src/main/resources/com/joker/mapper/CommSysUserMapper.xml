@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CommSysUserMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CommSysUser">
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="login_pwd" jdbcType="VARCHAR" property="loginPwd" />
+    <result column="user_alias" jdbcType="VARCHAR" property="userAlias" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
+    <result column="user_mobile" jdbcType="VARCHAR" property="userMobile" />
+    <result column="user_office_tel" jdbcType="VARCHAR" property="userOfficeTel" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_province" jdbcType="VARCHAR" property="userProvince" />
+    <result column="user_city" jdbcType="VARCHAR" property="userCity" />
+    <result column="organ_id" jdbcType="VARCHAR" property="organId" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id,login_name,login_pwd,user_alias,real_name,user_sex,user_mobile,user_office_tel,user_email,user_province,user_city,organ_id,
+    create_user,create_time,update_user,update_time
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comm_sys_user
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CommSysUser">
+    insert into comm_sys_user (user_id, login_name, login_pwd, 
+      user_alias, real_name, user_sex, 
+      user_mobile, user_office_tel, user_email, 
+      user_province, user_city, organ_id, 
+      create_user, create_time, update_user, 
+      update_time)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.userId,jdbcType=VARCHAR}, #{item.loginName,jdbcType=VARCHAR}, #{item.loginPwd,jdbcType=VARCHAR},
+      #{item.userAlias,jdbcType=VARCHAR}, #{item.realName,jdbcType=VARCHAR}, #{item.userSex,jdbcType=VARCHAR},
+      #{item.userMobile,jdbcType=VARCHAR}, #{item.userOfficeTel,jdbcType=VARCHAR}, #{item.userEmail,jdbcType=VARCHAR},
+      #{item.userProvince,jdbcType=VARCHAR}, #{item.userCity,jdbcType=VARCHAR}, #{item.organId,jdbcType=VARCHAR},
+      #{item.createUser,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateUser,jdbcType=VARCHAR},
+      #{item.updateTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CommSysRoleMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CommSysRole">
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="oragn_id" jdbcType="VARCHAR" property="oragnId" />
+    <result column="main_page" jdbcType="VARCHAR" property="mainPage" />
+    <result column="valid_flag" jdbcType="VARCHAR" property="validFlag" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id,role_name,create_user,create_time,oragn_id,main_page,valid_flag,update_user,update_time
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comm_sys_role
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CommSysRole">
+    insert into comm_sys_role (role_id, role_name, create_user, 
+      create_time, oragn_id, main_page, 
+      valid_flag, update_user, update_time
+      )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.roleId,jdbcType=VARCHAR}, #{item.roleName,jdbcType=VARCHAR}, #{item.createUser,jdbcType=VARCHAR},
+      #{item.createTime,jdbcType=TIMESTAMP}, #{item.oragnId,jdbcType=VARCHAR}, #{item.mainPage,jdbcType=VARCHAR},
+      #{item.validFlag,jdbcType=VARCHAR}, #{item.updateUser,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CommSysUserZjMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CommSysUserZj">
+    <id column="zjid" jdbcType="VARCHAR" property="zjid" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="zjxm" jdbcType="VARCHAR" property="zjxm" />
+    <result column="zjxb" jdbcType="VARCHAR" property="zjxb" />
+    <result column="zjsjh" jdbcType="VARCHAR" property="zjsjh" />
+    <result column="zjzc" jdbcType="VARCHAR" property="zjzc" />
+    <result column="zjjs" jdbcType="VARCHAR" property="zjjs" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="updater" jdbcType="VARCHAR" property="updater" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    zjid, userid, zjxm, zjxb, zjsjh, zjzc, zjjs, create_time, update_time, creater, updater
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comm_sys_user_zj
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CommSysUserZj">
+    insert into comm_sys_user_zj (zjid, userid, zjxm, 
+      zjxb, zjsjh, zjzc, 
+      zjjs, create_time, update_time, 
+      creater, updater)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.zjid,jdbcType=VARCHAR}, #{item.userid,jdbcType=VARCHAR}, #{item.zjxm,jdbcType=VARCHAR},
+      #{item.zjxb,jdbcType=VARCHAR}, #{item.zjsjh,jdbcType=VARCHAR}, #{item.zjzc,jdbcType=VARCHAR},
+      #{item.zjjs,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP},
+      #{item.creater,jdbcType=VARCHAR}, #{item.updater,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

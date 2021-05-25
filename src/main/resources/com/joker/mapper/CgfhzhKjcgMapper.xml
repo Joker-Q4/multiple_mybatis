@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CgfhzhKjcgMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CgfhzhKjcg">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="cgmc" jdbcType="VARCHAR" property="cgmc" />
+    <result column="gjc" jdbcType="VARCHAR" property="gjc" />
+    <result column="dwmc_id" jdbcType="VARCHAR" property="dwmcId" />
+    <result column="lxbm" jdbcType="VARCHAR" property="lxbm" />
+    <result column="lxr" jdbcType="VARCHAR" property="lxr" />
+    <result column="lxdh" jdbcType="VARCHAR" property="lxdh" />
+    <result column="cz" jdbcType="VARCHAR" property="cz" />
+    <result column="dzyx" jdbcType="VARCHAR" property="dzyx" />
+    <result column="cgtxxs_id" jdbcType="VARCHAR" property="cgtxxsId" />
+    <result column="cgjsly_id" jdbcType="VARCHAR" property="cgjslyId" />
+    <result column="sfdlyy_id" jdbcType="VARCHAR" property="sfdlyyId" />
+    <result column="gtyycqdw" jdbcType="VARCHAR" property="gtyycqdw" />
+    <result column="sfzl_id" jdbcType="VARCHAR" property="sfzlId" />
+    <result column="sfrjzzq_id" jdbcType="VARCHAR" property="sfrjzzqId" />
+    <result column="cgly_id" jdbcType="VARCHAR" property="cglyId" />
+    <result column="cglynd" jdbcType="VARCHAR" property="cglynd" />
+    <result column="cglyxmmc" jdbcType="VARCHAR" property="cglyxmmc" />
+    <result column="cglyxmlb_id" jdbcType="VARCHAR" property="cglyxmlbId" />
+    <result column="sftysb_id" jdbcType="VARCHAR" property="sftysbId" />
+    <result column="fhzjly_id" jdbcType="VARCHAR" property="fhzjlyId" />
+    <result column="fhzj" jdbcType="REAL" property="fhzj" />
+    <result column="fhkssj" jdbcType="TIMESTAMP" property="fhkssj" />
+    <result column="fhjssj" jdbcType="TIMESTAMP" property="fhjssj" />
+    <result column="rksj" jdbcType="TIMESTAMP" property="rksj" />
+    <result column="rkr_id" jdbcType="VARCHAR" property="rkrId" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="lrr_id" jdbcType="VARCHAR" property="lrrId" />
+    <result column="lrr_name" jdbcType="VARCHAR" property="lrrName" />
+    <result column="lczt_id" jdbcType="VARCHAR" property="lcztId" />
+    <result column="thbz" jdbcType="VARCHAR" property="thbz" />
+    <result column="shr_id" jdbcType="VARCHAR" property="shrId" />
+    <result column="shr_name" jdbcType="VARCHAR" property="shrName" />
+    <result column="shsj" jdbcType="TIMESTAMP" property="shsj" />
+    <result column="shjg" jdbcType="VARCHAR" property="shjg" />
+    <result column="jzpgdw_id" jdbcType="VARCHAR" property="jzpgdwId" />
+    <result column="jzpgje" jdbcType="REAL" property="jzpgje" />
+    <result column="zhssdw_id" jdbcType="VARCHAR" property="zhssdwId" />
+    <result column="bhtcr_id" jdbcType="VARCHAR" property="bhtcrId" />
+    <result column="bhtcr_name" jdbcType="VARCHAR" property="bhtcrName" />
+    <result column="old_lczt_id" jdbcType="VARCHAR" property="oldLcztId" />
+    <result column="bhtcsj" jdbcType="TIMESTAMP" property="bhtcsj" />
+    <result column="bhshr_id" jdbcType="VARCHAR" property="bhshrId" />
+    <result column="bhshr_name" jdbcType="VARCHAR" property="bhshrName" />
+    <result column="bhshsj" jdbcType="TIMESTAMP" property="bhshsj" />
+    <result column="cgly_zcfyly_id" jdbcType="VARCHAR" property="cglyZcfylyId" />
+    <result column="cgly_zcfyly" jdbcType="VARCHAR" property="cglyZcfyly" />
+    <result column="cgly_zcfysl" jdbcType="REAL" property="cglyZcfysl" />
+    <result column="cgly_hjjx_id" jdbcType="VARCHAR" property="cglyHjjxId" />
+    <result column="cgly_hjjb_id" jdbcType="VARCHAR" property="cglyHjjbId" />
+    <result column="XSHTHTSL" jdbcType="REAL" property="xshthtsl" />
+    <result column="XSHTZJE" jdbcType="REAL" property="xshtzje" />
+    <result column="cglx_id" jdbcType="VARCHAR" property="cglxId" />
+    <result column="hxjs" jdbcType="LONGVARCHAR" property="hxjs" />
+    <result column="bhsqsm" jdbcType="LONGVARCHAR" property="bhsqsm" />
+    <result column="bhzhpsyj" jdbcType="LONGVARCHAR" property="bhzhpsyj" />
+    <result column="sfdlyy_explain" jdbcType="LONGVARCHAR" property="sfdlyyExplain" />
+    <result column="bjyy" jdbcType="LONGVARCHAR" property="bjyy" />
+    <result column="cxd" jdbcType="LONGVARCHAR" property="cxd" />
+    <result column="tgqk" jdbcType="LONGVARCHAR" property="tgqk" />
+    <result column="yyfw" jdbcType="LONGVARCHAR" property="yyfw" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cgmc, gjc, dwmc_id, lxbm, lxr, lxdh, cz, dzyx, cgtxxs_id, cgjsly_id, sfdlyy_id, 
+    gtyycqdw, sfzl_id, sfrjzzq_id, cgly_id, cglynd, cglyxmmc, cglyxmlb_id, sftysb_id, 
+    fhzjly_id, fhzj, fhkssj, fhjssj, rksj, rkr_id, lrsj, lrr_id, lrr_name, lczt_id, thbz, 
+    shr_id, shr_name, shsj, shjg, jzpgdw_id, jzpgje, zhssdw_id, bhtcr_id, bhtcr_name, 
+    old_lczt_id, bhtcsj, bhshr_id, bhshr_name, bhshsj, cgly_zcfyly_id, cgly_zcfyly, cgly_zcfysl, 
+    cgly_hjjx_id, cgly_hjjb_id, XSHTHTSL, XSHTZJE, cglx_id, hxjs, bhsqsm, bhzhpsyj,
+    sfdlyy_explain, bjyy, cxd, tgqk, yyfw, jsjg
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cgfhzh_kjcg
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CgfhzhKjcg">
+    insert into cgfhzh_kjcg (id, cgmc, gjc,
+      dwmc_id, lxbm, lxr, 
+      lxdh, cz, dzyx, cgtxxs_id, 
+      cgjsly_id, sfdlyy_id, gtyycqdw, 
+      sfzl_id, sfrjzzq_id, cgly_id, 
+      cglynd, cglyxmmc, cglyxmlb_id, 
+      sftysb_id, fhzjly_id, fhzj, 
+      fhkssj, fhjssj, rksj, 
+      rkr_id, lrsj, lrr_id, 
+      lrr_name, lczt_id, thbz, 
+      shr_id, shr_name, shsj, 
+      shjg, jzpgdw_id, jzpgje, 
+      zhssdw_id, bhtcr_id, bhtcr_name, 
+      old_lczt_id, bhtcsj, bhshr_id, 
+      bhshr_name, bhshsj, cgly_zcfyly_id, 
+      cgly_zcfyly, cgly_zcfysl, cgly_hjjx_id, 
+      cgly_hjjb_id, XSHTHTSL, XSHTZJE, 
+      cglx_id, hxjs, bhsqsm, bhzhpsyj, sfdlyy_explain, bjyy, cxd, tgqk, yyfw, jsjg
+      )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.cgmc,jdbcType=VARCHAR}, #{item.gjc,jdbcType=VARCHAR},
+      #{item.dwmcId,jdbcType=VARCHAR}, #{item.lxbm,jdbcType=VARCHAR}, #{item.lxr,jdbcType=VARCHAR},
+      #{item.lxdh,jdbcType=VARCHAR}, #{item.cz,jdbcType=VARCHAR}, #{item.dzyx,jdbcType=VARCHAR}, #{item.cgtxxsId,jdbcType=VARCHAR},
+      #{item.cgjslyId,jdbcType=VARCHAR}, #{item.sfdlyyId,jdbcType=VARCHAR}, #{item.gtyycqdw,jdbcType=VARCHAR},
+      #{item.sfzlId,jdbcType=VARCHAR}, #{item.sfrjzzqId,jdbcType=VARCHAR}, #{item.cglyId,jdbcType=VARCHAR},
+      #{item.cglynd,jdbcType=VARCHAR}, #{item.cglyxmmc,jdbcType=VARCHAR}, #{item.cglyxmlbId,jdbcType=VARCHAR},
+      #{item.sftysbId,jdbcType=VARCHAR}, #{item.fhzjlyId,jdbcType=VARCHAR}, #{item.fhzj,jdbcType=REAL},
+      #{item.fhkssj,jdbcType=TIMESTAMP}, #{item.fhjssj,jdbcType=TIMESTAMP}, #{item.rksj,jdbcType=TIMESTAMP},
+      #{item.rkrId,jdbcType=VARCHAR}, #{item.lrsj,jdbcType=TIMESTAMP}, #{item.lrrId,jdbcType=VARCHAR},
+      #{item.lrrName,jdbcType=VARCHAR}, #{item.lcztId,jdbcType=VARCHAR}, #{item.thbz,jdbcType=VARCHAR},
+      #{item.shrId,jdbcType=VARCHAR}, #{item.shrName,jdbcType=VARCHAR}, #{item.shsj,jdbcType=TIMESTAMP},
+      #{item.shjg,jdbcType=VARCHAR}, #{item.jzpgdwId,jdbcType=VARCHAR}, #{item.jzpgje,jdbcType=REAL},
+      #{item.zhssdwId,jdbcType=VARCHAR}, #{item.bhtcrId,jdbcType=VARCHAR}, #{item.bhtcrName,jdbcType=VARCHAR},
+      #{item.oldLcztId,jdbcType=VARCHAR}, #{item.bhtcsj,jdbcType=TIMESTAMP}, #{item.bhshrId,jdbcType=VARCHAR},
+      #{item.bhshrName,jdbcType=VARCHAR}, #{item.bhshsj,jdbcType=TIMESTAMP}, #{item.cglyZcfylyId,jdbcType=VARCHAR},
+      #{item.cglyZcfyly,jdbcType=VARCHAR}, #{item.cglyZcfysl,jdbcType=REAL}, #{item.cglyHjjxId,jdbcType=VARCHAR},
+      #{item.cglyHjjbId,jdbcType=VARCHAR}, #{item.xshthtsl,jdbcType=REAL}, #{item.xshtzje,jdbcType=REAL},
+      #{item.cglxId,jdbcType=VARCHAR}, #{item.hxjs,jdbcType=LONGVARCHAR}, #{item.bhsqsm,jdbcType=LONGVARCHAR}, #{item.bhzhpsyj,jdbcType=LONGVARCHAR},
+      #{item.sfdlyyExplain,jdbcType=LONGVARCHAR}, #{item.bjyy,jdbcType=LONGVARCHAR}, #{item.cxd,jdbcType=LONGVARCHAR}, #{item.tgqk,jdbcType=LONGVARCHAR},
+      #{item.yyfw,jdbcType=LONGVARCHAR}, #{item.jsjg,jdbcType=LONGVARCHAR}
+      )
+    </foreach>
+  </insert>
+</mapper>

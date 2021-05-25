@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CgfhzhJzpgdwMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CgfhzhJzpgdw">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="dwmc" jdbcType="VARCHAR" property="dwmc" />
+    <result column="sshy_id" jdbcType="VARCHAR" property="sshyId" />
+    <result column="zzdj_id" jdbcType="VARCHAR" property="zzdjId" />
+    <result column="pgly_id" jdbcType="VARCHAR" property="pglyId" />
+    <result column="ssdy" jdbcType="VARCHAR" property="ssdy" />
+    <result column="lxr" jdbcType="VARCHAR" property="lxr" />
+    <result column="lxdh" jdbcType="VARCHAR" property="lxdh" />
+    <result column="cz" jdbcType="VARCHAR" property="cz" />
+    <result column="dzyj" jdbcType="VARCHAR" property="dzyj" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="lrr_id" jdbcType="VARCHAR" property="lrrId" />
+    <result column="lrr_name" jdbcType="VARCHAR" property="lrrName" />
+    <result column="lczt_id" jdbcType="VARCHAR" property="lcztId" />
+    <result column="shr_id" jdbcType="VARCHAR" property="shrId" />
+    <result column="shr_name" jdbcType="VARCHAR" property="shrName" />
+    <result column="shsj" jdbcType="TIMESTAMP" property="shsj" />
+    <result column="shjg" jdbcType="VARCHAR" property="shjg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dwmc, sshy_id, zzdj_id, pgly_id, ssdy, lxr, lxdh, cz, dzyj, lrsj, lrr_id, lrr_name, 
+    lczt_id, shr_id, shr_name, shsj, shjg
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cgfhzh_jzpgdw
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CgfhzhJzpgdw">
+    insert into cgfhzh_jzpgdw (id, dwmc, sshy_id, 
+      zzdj_id, pgly_id, ssdy, 
+      lxr, lxdh, cz, dzyj, 
+      lrsj, lrr_id, lrr_name, 
+      lczt_id, shr_id, shr_name, 
+      shsj, shjg)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.dwmc,jdbcType=VARCHAR}, #{item.sshyId,jdbcType=VARCHAR},
+      #{item.zzdjId,jdbcType=VARCHAR}, #{item.pglyId,jdbcType=VARCHAR}, #{item.ssdy,jdbcType=VARCHAR},
+      #{item.lxr,jdbcType=VARCHAR}, #{item.lxdh,jdbcType=VARCHAR}, #{item.cz,jdbcType=VARCHAR}, #{item.dzyj,jdbcType=VARCHAR},
+      #{item.lrsj,jdbcType=TIMESTAMP}, #{item.lrrId,jdbcType=VARCHAR}, #{item.lrrName,jdbcType=VARCHAR},
+      #{item.lcztId,jdbcType=VARCHAR}, #{item.shrId,jdbcType=VARCHAR}, #{item.shrName,jdbcType=VARCHAR},
+      #{item.shsj,jdbcType=TIMESTAMP}, #{item.shjg,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

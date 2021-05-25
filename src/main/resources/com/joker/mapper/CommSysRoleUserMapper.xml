@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CommSysRoleUserMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CommSysRoleUser">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id,role_id,user_id
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comm_sys_role_user
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CommSysRoleUser">
+    insert into comm_sys_role_user (id, role_id, user_id)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id,jdbcType=INTEGER}, #{item.roleId,jdbcType=VARCHAR}, #{item.userId,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

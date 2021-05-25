@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CgfhzhKjcgZlkMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CgfhzhKjcgZlk">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="kjcg_id" jdbcType="VARCHAR" property="kjcgId" />
+    <result column="zllx_id" jdbcType="VARCHAR" property="zllxId" />
+    <result column="zlmc" jdbcType="VARCHAR" property="zlmc" />
+    <result column="zldz" jdbcType="VARCHAR" property="zldz" />
+    <result column="zlbz" jdbcType="VARCHAR" property="zlbz" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, kjcg_id, zllx_id, zlmc, zldz, zlbz
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cgfhzh_kjcg_zlk
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CgfhzhKjcgZlk">
+    insert into cgfhzh_kjcg_zlk (id, kjcg_id, zllx_id, 
+      zlmc, zldz, zlbz)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.kjcgId,jdbcType=VARCHAR}, #{item.zllxId,jdbcType=VARCHAR},
+      #{item.zlmc,jdbcType=VARCHAR}, #{item.zldz,jdbcType=VARCHAR}, #{item.zlbz,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

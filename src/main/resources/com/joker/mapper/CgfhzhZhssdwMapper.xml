@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CgfhzhZhssdwMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CgfhzhZhssdw">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="dw_id" jdbcType="VARCHAR" property="dwId" />
+    <result column="jsly_id" jdbcType="VARCHAR" property="jslyId" />
+    <result column="zzdj_id" jdbcType="VARCHAR" property="zzdjId" />
+    <result column="lxr" jdbcType="VARCHAR" property="lxr" />
+    <result column="lxdh" jdbcType="VARCHAR" property="lxdh" />
+    <result column="cz" jdbcType="VARCHAR" property="cz" />
+    <result column="dzyj" jdbcType="VARCHAR" property="dzyj" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="lrr_id" jdbcType="VARCHAR" property="lrrId" />
+    <result column="lrr_name" jdbcType="VARCHAR" property="lrrName" />
+    <result column="lczt_id" jdbcType="VARCHAR" property="lcztId" />
+    <result column="shr_id" jdbcType="VARCHAR" property="shrId" />
+    <result column="shr_name" jdbcType="VARCHAR" property="shrName" />
+    <result column="shsj" jdbcType="TIMESTAMP" property="shsj" />
+    <result column="shjg" jdbcType="VARCHAR" property="shjg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dw_id, jsly_id, zzdj_id, lxr, lxdh, cz, dzyj, lrsj, lrr_id, lrr_name, lczt_id, 
+    shr_id, shr_name, shsj, shjg
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cgfhzh_zhssdw
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CgfhzhZhssdw">
+    insert into cgfhzh_zhssdw (id, dw_id, jsly_id, 
+      zzdj_id, lxr, lxdh, 
+      cz, dzyj, lrsj, lrr_id, 
+      lrr_name, lczt_id, shr_id, 
+      shr_name, shsj, shjg
+      )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id}, #{item.dwId}, #{item.jslyId},
+      #{item.zzdjId}, #{item.lxr}, #{item.lxdh},
+      #{item.cz}, #{item.dzyj}, #{item.lrsj}, #{item.lrrId},
+      #{item.lrrName}, #{item.lcztId}, #{item.shrId},
+      #{item.shrName}, #{item.shsj}, #{item.shjg}
+      )
+    </foreach>
+  </insert>
+</mapper>

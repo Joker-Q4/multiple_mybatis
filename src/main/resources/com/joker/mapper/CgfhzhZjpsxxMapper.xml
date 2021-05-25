@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CgfhzhZjpsxxMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CgfhzhZjpsxx">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="psyj" jdbcType="VARCHAR" property="psyj" />
+    <result column="pf" jdbcType="VARCHAR" property="pf" />
+    <result column="psxmid" jdbcType="VARCHAR" property="psxmid" />
+    <result column="zjid" jdbcType="VARCHAR" property="zjid" />
+    <result column="pssj" jdbcType="TIMESTAMP" property="pssj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, psyj, pf, psxmid, zjid, pssj
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cgfhzh_zjpsxx
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CgfhzhZjpsxx">
+    insert into cgfhzh_zjpsxx (id, psyj, pf, 
+      psxmid, zjid, pssj
+      )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.psyj,jdbcType=VARCHAR}, #{item.pf,jdbcType=VARCHAR},
+      #{item.psxmid,jdbcType=VARCHAR}, #{item.zjid,jdbcType=VARCHAR}, #{item.pssj,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+</mapper>

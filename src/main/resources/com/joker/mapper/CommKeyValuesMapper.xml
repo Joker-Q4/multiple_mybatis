@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.mapper.CommKeyValuesMapper">
+  <resultMap id="BaseResultMap" type="com.joker.entity.CommKeyValues">
+    <result column="mykey" jdbcType="VARCHAR" property="mykey" />
+    <result column="myvalue" jdbcType="VARCHAR" property="myvalue" />
+    <result column="keytype" jdbcType="VARCHAR" property="keytype" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="is_del" jdbcType="VARCHAR" property="isDel" />
+    <result column="seq" jdbcType="VARCHAR" property="seq" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mykey, myvalue,keytype,remark,create_time,create_user,is_del,seq
+  </sql>
+  <select id="findList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comm_key_values
+  </select>
+  <insert id="insert" parameterType="com.joker.entity.CommKeyValues">
+    insert into comm_key_values (mykey, myvalue, keytype, 
+      remark, create_time, create_user, 
+      is_del, seq)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.mykey,jdbcType=VARCHAR}, #{item.myvalue,jdbcType=VARCHAR}, #{item.keytype,jdbcType=VARCHAR},
+      #{item.remark,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.createUser,jdbcType=VARCHAR},
+      #{item.isDel,jdbcType=VARCHAR}, #{item.seq,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>
